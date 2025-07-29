@@ -1,14 +1,97 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cores Primárias */
+  --primary-1: #4094d4;
+  --primary-2: #3c4f5e;
+  --on-primary: #ffffff;
+  --primary-linear-1: rgba(64, 148, 212, 0.2);
+  --primary-linear-2: rgba(60, 79, 94, 0.2);
+
+  /* Cores de Alerta */
+  --success: #3c8505;
+  --alert: #ffb800;
+  --error: #d91b1b;
+
+  /* Cores de Background */
+  --background-1: #ffffff;
+  --background-2: #f1f6ff;
+  --divider: #d3e0fe;
+
+  /* Cores de Surface */
+  --surface-1: #ffffff;
+  --surface-2: #f1f6ff;
+  --surface-3: #e8ecf3;
+  --on-surface-1: #2e3139;
+  --on-surface-2: #425583;
+  --on-surface-3: #899cc9;
+
+  /* Cores de Status */
+  --status-1: #763cef;
+  --status-2: #2798f7;
+  --status-3: #feca57;
+  --status-4: #100db1;
+  --status-5: #f80d38;
+
+  /* Cores de Texto */
+  --text-50: #f9fafb;
+  --text-100: #f3f4f6;
+  --text-200: #e5e7eb;
+  --text-300: #d1d5db;
+  --text-400: #9ca3af;
+  --text-500: #6b7280;
+  --text-600: #4b5563;
+  --text-700: #374151;
+  --text-800: #1f2937;
+  --text-900: #111827;
+  --text-white: #ffffff;
+  --text-black: #000000;
+
+  /* Tipografia - Fonte Graphie */
+  --font-graphie:
+    'Graphie', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Tamanhos de Fonte */
+  --font-size-headline: 64px;
+  --font-size-title-large: 32px;
+  --font-size-title-medium: 24px;
+  --font-size-body-large: 16px;
+  --font-size-body-medium: 14px;
+  --font-size-body-small: 12px;
+  --font-size-label-medium: 12px;
+  --font-size-label-small: 10px;
+
+  /* Pesos de Fonte */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Espaçamento de Letras */
+  --letter-spacing: 0%;
+
+  /* Variáveis de tema padrão */
+  --background: var(--background-1);
+  --foreground: var(--on-surface-1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+@theme {
+  --color-primary-1: #4094d4;
+  --color-primary-2: #3c4f5e;
+  --color-on-primary: #ffffff;
+  --color-success: #3c8505;
+  --color-alert: #ffb800;
+  --color-error: #d91b1b;
+  --color-border: #d1d5db;
+  --color-background-1: #ffffff;
+  --color-background-2: #f1f6ff;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f1f6ff;
+  --color-surface-3: #e8ecf3;
+  --color-on-surface-1: #2e3139;
+  --color-on-surface-2: #425583;
+  --color-on-surface-3: #899cc9;
+
+  --font-sans: var(--font-graphie);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -19,8 +102,91 @@
   }
 }
 
+/* Estilos de Tipografia como utilitários do Tailwind */
+@layer utilities {
+  .headline {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-headline);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .title-large {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-title-large);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .title-medium {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-title-medium);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .body-large-bold {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-body-large);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .body-large-regular {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-body-large);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .body-medium-medium {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-body-medium);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .body-medium-regular {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-body-medium);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .body-small {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-body-small);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .label-medium {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-label-medium);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+
+  .label-small {
+    font-family: var(--font-graphie);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-label-small);
+    line-height: auto;
+    letter-spacing: var(--letter-spacing);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-graphie);
 }

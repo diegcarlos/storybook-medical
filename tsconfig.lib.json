@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "rootDir": "src",
+    "module": "commonjs",
+    "target": "es2018",
+    "lib": ["es2018", "dom"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/components/**/*", "src/lib/**/*", "src/types/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/stories/**/*",
+    "src/pages/**/*",
+    ".storybook/**/*"
+  ]
+}
