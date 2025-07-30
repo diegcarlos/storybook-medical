@@ -12,9 +12,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Icons: Story = {
-  args: {
-    size: 'large',
-    primary: true,
-    label: 'Icons',
-  },
+  args: {},
 };

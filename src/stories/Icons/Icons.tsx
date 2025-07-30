@@ -5,9 +5,5 @@ export interface IconsProps {}
 export const Icons = (props: IconsProps) => {
   const {} = props;
 
-  return (
-    <div>
-      <AlertCircle />
-    </div>
-  );
+  return <AlertCircle />;
 };
