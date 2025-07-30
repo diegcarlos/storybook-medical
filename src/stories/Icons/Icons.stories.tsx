@@ -1,16 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import { Icons as IconsComponent } from './Icons';
 
-const meta = {
-  title: 'Components/Icons',
+const meta: Meta<typeof IconsComponent> = {
+  title: 'Components/Icon',
   component: IconsComponent,
-  tags: ['autodocs'],
-} satisfies Meta<typeof IconsComponent>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Icons: Story = {
+type Story = StoryObj<typeof IconsComponent>;
+
+export const Default: Story = {
   args: {},
 };

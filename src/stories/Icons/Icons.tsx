@@ -1,9 +1,13 @@
-import AlertCircle from '@/assets/svg/fill/alert-circle.svg?react';
+import IconPerson from '../../assets/svg/fill/archive.svg?react';
 
 export interface IconsProps {}
 
 export const Icons = (props: IconsProps) => {
   const {} = props;
 
-  return <AlertCircle />;
+  return (
+    <div className="flex items-center gap-4">
+      <IconPerson />
+    </div>
+  );
 };
