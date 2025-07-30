@@ -1,3 +1,4 @@
+import React from 'react';
 import { tv } from 'tailwind-variants';
 
 export interface ButtonProps
@@ -35,6 +36,9 @@ const buttonSize = tv({
     'transition-colors',
     'duration-200',
     'cursor-pointer',
+    'flex',
+    'items-center',
+    'justify-center',
   ],
   variants: {
     primary: {

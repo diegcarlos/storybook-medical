@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/nextjs-vite';
+import svgr from 'vite-plugin-svgr';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -15,6 +16,12 @@ const config: StorybookConfig = {
   },
   staticDirs: ['../public', '../src/stories/assets'],
   viteFinal: async (config) => {
+    // Adicionar o plugin SVGR
+    if (!config.plugins) {
+      config.plugins = [];
+    }
+    config.plugins.push(svgr());
+
     // Garantir que o PostCSS seja processado corretamente
     if (config.css) {
       config.css.postcss = {
