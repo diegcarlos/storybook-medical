@@ -39,6 +39,7 @@ const buttonSize = tv({
     'flex',
     'items-center',
     'justify-center',
+    'px-4',
   ],
   variants: {
     primary: {
@@ -64,10 +65,10 @@ const buttonSize = tv({
       ],
     },
     size: {
-      large: ['body-large-regular', 'w-34', 'h-12'],
-      medium: ['body-medium-medium', 'w-34', 'h-11'],
-      small: ['body-medium-medium', 'w-32', 'h-10'],
-      xSmall: ['body-small', 'w-27', 'h-9'],
+      large: ['body-large-regular', 'h-12'],
+      medium: ['body-medium-medium', 'h-11'],
+      small: ['body-medium-medium', 'h-10'],
+      xSmall: ['body-small', 'h-9'],
     },
   },
   defaultVariants: {
