@@ -1,6 +1,33 @@
 const fs = require('fs');
 const path = require('path');
 
+// Função para gerar nome de componente válido
+function generateValidComponentName(filename) {
+  // Remove a extensão .svg
+  const nameWithoutExt = path.basename(filename, '.svg');
+
+  // Remove caracteres especiais e espaços, mantendo apenas letras, números e hífens
+  const cleanName = nameWithoutExt
+    .replace(/[^a-zA-Z0-9-]/g, ' ') // Substitui caracteres especiais por espaço
+    .split(/[\s-]+/) // Divide por espaços e hífens
+    .filter((word) => word.length > 0) // Remove strings vazias
+    .map((word) => {
+      // Se a palavra começa com número, adiciona um prefixo
+      if (/^\d/.test(word)) {
+        return 'Icon' + word.charAt(0).toUpperCase() + word.slice(1);
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join('');
+
+  // Se o nome resultante estiver vazio ou começar com número, adiciona prefixo
+  if (!cleanName || /^\d/.test(cleanName)) {
+    return 'Icon' + cleanName;
+  }
+
+  return cleanName;
+}
+
 // Função para converter SVG para formato React padrão
 function convertSvgToReact(svgContent, componentName) {
   // Extrair viewBox
@@ -93,11 +120,7 @@ function processDirectory(dirPath, outputDir, relativePath = '') {
       hasSvgFiles = true;
       // Converter arquivo SVG
       const svgContent = fs.readFileSync(filePath, 'utf8');
-      const componentName = path
-        .basename(file, '.svg')
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join('');
+      const componentName = generateValidComponentName(file);
 
       const reactCode = convertSvgToReact(svgContent, componentName);
       const outputPath = path.join(outputDir, `${componentName}.tsx`);
