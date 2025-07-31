@@ -31,12 +31,10 @@ export const Input = (props: InputProps) => {
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label className="label-medium !text-[var(--color-on-surface-1)]">
-          {label}
-        </label>
+        <label className="label-medium text-on-surface-1">{label}</label>
       )}
       <div className={containerInputTv({ sizes, error })}>
-        <div className="flex h-full !w-[16px] items-center text-[var(--text-400)]">
+        <div className="text-text-400 flex h-full !max-w-[16px] items-center">
           {beforeIcon}
         </div>
         <input
@@ -56,7 +54,7 @@ export const Input = (props: InputProps) => {
           }}
           hidden={!showClear}
           type="button"
-          className="flex h-full cursor-pointer items-center justify-center text-[var(--text-400)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+          className="text-text-400 flex h-full cursor-pointer items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         >
           <CloseOutline width={16} height={16} />
         </button>
@@ -76,12 +74,11 @@ const containerInputTv = tv({
     'relative',
     'flex',
     'h-12',
-    'items-center',
-    'justify-between',
     'gap-2',
     '!rounded-[8px]',
     'border-1',
-    'border-[var(--text-300)]',
+    'border-text-300',
+    'body-medium-regular',
     'px-4',
     'font-semibold',
     'hover:border-primary-1',
@@ -105,10 +102,11 @@ const containerInputTv = tv({
 
 const inputSize = tv({
   base: [
-    'placeholder:text-[var(--text-400)]',
+    'placeholder:text-text-400',
+    'w-full',
     'outline-none',
     'body-medium-regular',
-    '!text-[var(--color-on-surface-1)]',
+    '!text-on-surface-1',
   ],
   variants: {
     sizes: {
@@ -122,13 +120,7 @@ const inputSize = tv({
 });
 
 const helperTextTv = tv({
-  base: [
-    'body-small',
-    'flex',
-    'items-center',
-    'gap-1',
-    'text-[var(--color-on-surface-1)]',
-  ],
+  base: ['body-small', 'flex', 'items-center', 'gap-1', 'text-on-surface-1'],
   variants: {
     error: {
       true: ['text-error'],

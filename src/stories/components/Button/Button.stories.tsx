@@ -7,7 +7,7 @@ const meta = {
   title: 'Components/Button',
   component: ButtonComponent,
   argTypes: {
-    label: {
+    children: {
       control: {
         type: 'text',
       },
@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Button: Story = {
   args: {
-    label: 'Button',
+    children: 'Button',
     primary: true,
     size: 'large',
     disabled: false,

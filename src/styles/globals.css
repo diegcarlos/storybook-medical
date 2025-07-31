@@ -1,55 +1,59 @@
 @import 'tailwindcss';
 
-:root {
+@theme {
   /* Cores Primárias */
-  --primary-1: #4094d4;
-  --primary-2: #3c4f5e;
-  --on-primary: #ffffff;
-  --primary-linear-1: rgba(64, 148, 212, 0.2);
-  --primary-linear-2: rgba(60, 79, 94, 0.2);
+  --color-primary-1: #4094d4;
+  --color-primary-2: #3c4f5e;
+  --color-on-primary: #ffffff;
+  --color-primary-linear-1: rgba(64, 148, 212, 0.2);
+  --color-primary-linear-2: rgba(60, 79, 94, 0.2);
 
   /* Cores de Alerta */
-  --success: #3c8505;
-  --alert: #ffb800;
-  --error: #d91b1b;
+  --color-success: #3c8505;
+  --color-alert: #ffb800;
+  --color-error: #d91b1b;
 
   /* Cores de Background */
-  --background-1: #ffffff;
-  --background-2: #f1f6ff;
-  --divider: #d3e0fe;
+  --color-background-1: #ffffff;
+  --color-background-2: #f1f6ff;
+  --color-divider: #d3e0fe;
 
   /* Cores de Surface */
-  --surface-1: #ffffff;
-  --surface-2: #f1f6ff;
-  --surface-3: #e8ecf3;
-  --on-surface-1: #2e3139;
-  --on-surface-2: #425583;
-  --on-surface-3: #899cc9;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f1f6ff;
+  --color-surface-3: #e8ecf3;
+  --color-on-surface-1: #2e3139;
+  --color-on-surface-2: #425583;
+  --color-on-surface-3: #899cc9;
 
   /* Cores de Status */
-  --status-1: #763cef;
-  --status-2: #2798f7;
-  --status-3: #feca57;
-  --status-4: #100db1;
-  --status-5: #f80d38;
+  --color-status-1: #763cef;
+  --color-status-2: #2798f7;
+  --color-status-3: #feca57;
+  --color-status-4: #100db1;
+  --color-status-5: #f80d38;
 
   /* Cores de Texto */
-  --text-50: #f9fafb;
-  --text-100: #f3f4f6;
-  --text-200: #e5e7eb;
-  --text-300: #d1d5db;
-  --text-400: #9ca3af;
-  --text-500: #6b7280;
-  --text-600: #4b5563;
-  --text-700: #374151;
-  --text-800: #1f2937;
-  --text-900: #111827;
-  --text-white: #ffffff;
-  --text-black: #000000;
+  --color-text-50: #f9fafb;
+  --color-text-100: #f3f4f6;
+  --color-text-200: #e5e7eb;
+  --color-text-300: #d1d5db;
+  --color-text-400: #9ca3af;
+  --color-text-500: #6b7280;
+  --color-text-600: #4b5563;
+  --color-text-700: #374151;
+  --color-text-800: #1f2937;
+  --color-text-900: #111827;
+  --color-text-white: #ffffff;
+  --color-text-black: #000000;
+
+  /* Cores de Border */
+  --color-border: #d1d5db;
 
   /* Tipografia - Fonte Graphie */
-  --font-graphie:
+  --font-sans:
     'Graphie', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono);
 
   /* Tamanhos de Fonte */
   --font-size-headline: 64px;
@@ -70,42 +74,21 @@
   --letter-spacing: 0%;
 
   /* Variáveis de tema padrão */
-  --background: var(--background-1);
-  --foreground: var(--on-surface-1);
-}
-
-@theme {
-  --color-primary-1: #4094d4;
-  --color-primary-2: #3c4f5e;
-  --color-on-primary: #ffffff;
-  --color-success: #3c8505;
-  --color-alert: #ffb800;
-  --color-error: #d91b1b;
-  --color-border: #d1d5db;
-  --color-background-1: #ffffff;
-  --color-background-2: #f1f6ff;
-  --color-surface-1: #ffffff;
-  --color-surface-2: #f1f6ff;
-  --color-surface-3: #e8ecf3;
-  --color-on-surface-1: #2e3139;
-  --color-on-surface-2: #425583;
-  --color-on-surface-3: #899cc9;
-
-  --font-sans: var(--font-graphie);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-background-1);
+  --color-foreground: var(--color-on-surface-1);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
   }
 }
 
 /* Estilos de Tipografia como utilitários do Tailwind */
 @layer utilities {
   .headline {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-headline);
     line-height: auto;
@@ -113,7 +96,7 @@
   }
 
   .title-large {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-title-large);
     line-height: auto;
@@ -121,7 +104,7 @@
   }
 
   .title-medium {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-title-medium);
     line-height: auto;
@@ -129,7 +112,7 @@
   }
 
   .body-large-bold {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-body-large);
     line-height: auto;
@@ -137,7 +120,7 @@
   }
 
   .body-large-regular {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-body-large);
     line-height: auto;
@@ -145,7 +128,7 @@
   }
 
   .body-medium-medium {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-body-medium);
     line-height: auto;
@@ -153,7 +136,7 @@
   }
 
   .body-medium-regular {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-body-medium);
     line-height: auto;
@@ -161,7 +144,7 @@
   }
 
   .body-small {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-body-small);
     line-height: auto;
@@ -169,7 +152,7 @@
   }
 
   .label-medium {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-label-medium);
     line-height: auto;
@@ -177,7 +160,7 @@
   }
 
   .label-small {
-    font-family: var(--font-graphie);
+    font-family: var(--font-sans);
     font-weight: var(--font-weight-regular);
     font-size: var(--font-size-label-small);
     line-height: auto;
@@ -186,7 +169,6 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-graphie);
+  background: var(--color-background);
+  font-family: var(--font-sans);
 }
