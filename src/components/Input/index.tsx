@@ -1,5 +1,4 @@
-import { AlertCircle } from '@/components/icons/fill';
-import { CloseOutline } from '@/components/icons/outline';
+import { IconsFill, IconsOutline } from '@/components/icons';
 import React, { useRef } from 'react';
 import { tv } from 'tailwind-variants';
 
@@ -56,12 +55,12 @@ export const Input = (props: InputProps) => {
           type="button"
           className="text-text-400 flex h-full cursor-pointer items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         >
-          <CloseOutline width={16} height={16} />
+          <IconsOutline icon="CloseOutline" width={16} height={16} />
         </button>
       </div>
       {helperText && (
         <p className={helperTextTv({ error })}>
-          <AlertCircle width={12} height={12} /> {helperText}
+          <IconsFill icon="AlertCircle" width={12} height={12} /> {helperText}
         </p>
       )}
     </div>

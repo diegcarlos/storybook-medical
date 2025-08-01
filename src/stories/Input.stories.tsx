@@ -1,4 +1,4 @@
-import { EmailOutline } from '@/components/icons/outline';
+import { IconsOutline } from '@/components/icons';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { Input as InputComponent } from '@/components/Input';
@@ -32,7 +32,7 @@ export const Input: Story = {
     disabled: false,
     showClear: false,
     error: false,
-    beforeIcon: <EmailOutline width={16} height={16} />,
+    beforeIcon: <IconsOutline icon="EmailOutline" width={16} height={16} />,
     onClear: () => {},
   },
 };

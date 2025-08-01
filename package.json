@@ -1,6 +1,6 @@
 {
   "name": "care-monitor-components",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,8 @@
     "format:check": "prettier --check .",
     "build:lib": "tsup",
     "prepare": "npm run build:lib",
-    "convert:svg": "node scripts/convert-svg-to-jsx.js"
+    "convert:svg": "node scripts/convert-svg-to-jsx.js",
+    "publish": "publish --access public"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

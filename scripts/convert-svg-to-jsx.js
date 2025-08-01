@@ -76,25 +76,67 @@ function createIndexFile(dirPath, relativePath = '') {
   if (!fs.existsSync(dirPath)) return;
 
   const files = fs.readdirSync(dirPath);
-  const tsxFiles = files.filter((file) => file.endsWith('.tsx'));
+  const tsxFiles = files.filter(
+    (file) => file.endsWith('.tsx') && file !== 'index.tsx'
+  );
 
   if (tsxFiles.length === 0) return;
 
+  // Gerar exportações normais
   const exports = tsxFiles
     .map((file) => {
       const componentName = path.basename(file, '.tsx');
-      return `export { default as ${componentName} } from './${componentName}';`;
+      return `import ${componentName} from './${componentName}';`;
     })
     .join('\n');
 
+  // Gerar tipagens dos ícones
+  const iconNames = tsxFiles.map((file) => path.basename(file, '.tsx'));
+  const iconType = iconNames.map((name) => `'${name}'`).join(' | ');
+
+  // Gerar array allIcons
+  const allIconsArray = `[${iconNames.map((name) => `'${name}'`).join(', ')}]`;
+
+  // Gerar switch case para cada ícone
+  const switchCases = iconNames
+    .map((name) => `    case '${name}':\n      return <${name} {...props} />;`)
+    .join('\n');
+
+  // Determinar o nome do componente baseado no diretório
+  const componentName = relativePath ? relativePath.split('/').pop() : 'Icons';
+  const capitalizedComponentName =
+    componentName.charAt(0).toUpperCase() + componentName.slice(1);
+
   const indexContent = `// Auto-generated index file for ${relativePath || 'icons'}
 ${exports}
+
+// Tipagem dos ícones disponíveis
+export type IconName = ${iconType};
+
+// Array com todos os nomes dos ícones
+export const allIcons: IconName[] = ${allIconsArray};
+
+// Interface para as props do componente
+interface ${capitalizedComponentName}Props extends React.SVGProps<SVGSVGElement> {
+  icon: IconName;
+}
+
+// Componente React que aceita a prop icon
+const ${capitalizedComponentName} = ({ icon, ...props }: ${capitalizedComponentName}Props) => {
+  switch (icon) {
+${switchCases}
+    default:
+      return null;
+  }
+};
+
+export default ${capitalizedComponentName};
 `;
 
-  const indexPath = path.join(dirPath, 'index.ts');
+  const indexPath = path.join(dirPath, 'index.tsx');
   fs.writeFileSync(indexPath, indexContent);
   console.log(
-    `📁 Criado índice: ${relativePath || 'icons'}/index.ts (${tsxFiles.length} componentes)`
+    `📁 Criado índice: ${relativePath || 'icons'}/index.tsx (${tsxFiles.length} componentes)`
   );
 }
 
@@ -145,17 +187,23 @@ function createMainIndex(outputDir) {
 
   if (subdirs.length === 0) return;
 
+  // Gerar exportações dos ícones
+  let nameExports = [];
   const exports = subdirs
     .map((subdir) => {
-      return `export * from './${subdir}';`;
+      const nameSubdir = subdir.charAt(0).toUpperCase() + subdir.slice(1);
+      nameExports.push(`Icons${nameSubdir}`);
+      return `import Icons${nameSubdir} from './${subdir}';`;
     })
     .join('\n');
 
   const indexContent = `// Auto-generated main index file
 ${exports}
+
+export { ${nameExports.join(', ')} };
 `;
 
-  const indexPath = path.join(outputDir, 'index.ts');
+  const indexPath = path.join(outputDir, 'index.tsx');
   fs.writeFileSync(indexPath, indexContent);
   console.log(`📁 Criado índice principal: icons/index.ts`);
 }

@@ -12,3 +12,6 @@ export { CardLogin } from './components/CardLogin';
 
 // Páginas
 export { Login } from './Pages/Login';
+
+//Icons
+export * from './components/icons';

@@ -2,12 +2,7 @@ import { BgLogin } from '@/components/BgLogin';
 import { Button } from '@/components/Button';
 import { CardLogin } from '@/components/CardLogin';
 import { Divider } from '@/components/Divider';
-import {
-  ChevronRightOutline,
-  EmailOutline,
-  Google,
-  LockOutline,
-} from '@/components/icons/outline';
+import { IconsOutline } from '@/components/icons';
 import { Input } from '@/components/Input';
 import { Modal } from '@/components/Modal';
 import { Segmented } from '@/components/Segmented';
@@ -116,7 +111,7 @@ export const Login = (props: LoginProps) => {
             >
               <Input
                 label="E-mail"
-                beforeIcon={<EmailOutline />}
+                beforeIcon={<IconsOutline icon="EmailOutline" />}
                 placeholder="Digite seu e-mail"
                 {...register('email')}
                 error={!!errors.email?.message}
@@ -124,7 +119,7 @@ export const Login = (props: LoginProps) => {
               />
               <Input
                 label="Senha"
-                beforeIcon={<LockOutline />}
+                beforeIcon={<IconsOutline icon="LockOutline" />}
                 placeholder="Digite sua senha"
                 type="password"
                 {...register('password')}
@@ -159,7 +154,7 @@ export const Login = (props: LoginProps) => {
                 className="flex flex-row items-center gap-2 text-[#9F9F9F]"
                 type="button"
               >
-                <Google />
+                <IconsOutline icon="Google" />
                 Continuar com Google
               </Button>
             </form>
@@ -184,7 +179,7 @@ export const Login = (props: LoginProps) => {
             >
               <span>Falar conosco</span>
               <span className="text-primary-1">
-                <ChevronRightOutline />
+                <IconsOutline icon="ChevronRightOutline" />
               </span>
             </a>
           </div>
@@ -228,7 +223,7 @@ export const Login = (props: LoginProps) => {
         isOpen={isModalOpen}
         title="Esqueceu a Senha?"
         description="Digite seu e-mail para redefinir sua senha"
-        icon={<LockOutline />}
+        icon={<IconsOutline icon="LockOutline" />}
         footer={
           <div className="flex gap-4">
             <Button primary={false} onClick={() => setIsModalOpen(false)}>
@@ -243,7 +238,7 @@ export const Login = (props: LoginProps) => {
             sizes="large"
             label="Email"
             placeholder="Digite seu e-mail"
-            beforeIcon={<EmailOutline />}
+            beforeIcon={<IconsOutline icon="EmailOutline" />}
           />
         </div>
       </Modal>

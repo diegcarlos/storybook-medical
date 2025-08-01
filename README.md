@@ -1,4 +1,4 @@
-# @care-monitor/components
+# care-monitor-components
 
 Uma biblioteca de componentes React para aplicações médicas, construída com TypeScript, Tailwind CSS e Storybook.
 
@@ -12,7 +12,7 @@ npm install care-monitor-components
 
 ```tsx
 import React from 'react';
-import { Button, Input, Login } from '@care-monitor/components';
+import { Button, Input, Login } from 'care-monitor-components';
 
 function App() {
   return (
@@ -56,19 +56,19 @@ import {
   ChevronRightOutline,
   EmailOutline,
   LockOutline,
-} from '@care-monitor/components';
+} from 'care-monitor-components';
 ```
 
 #### Fill Icons
 
 ```tsx
-import { Activity, AlertCircle, Checkmark } from '@care-monitor/components';
+import { Activity, AlertCircle, Checkmark } from 'care-monitor-components';
 ```
 
 #### Medical Icons
 
 ```tsx
-import { BloodPressure, Heart, Stethoscope } from '@care-monitor/components';
+import { BloodPressure, Heart, Stethoscope } from 'care-monitor-components';
 ```
 
 ## Tecnologias
