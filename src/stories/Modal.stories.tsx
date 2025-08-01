@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { Button } from '@/components/Button';
-import { Outline } from '@/components/icons';
+import { IconsOutline } from '@/components/icons';
 import { Modal as ModalComponent } from '@/components/Modal';
 
 const meta = {
@@ -55,7 +55,7 @@ export const Modal: Story = {
     contentClassName: '',
     dialogClassName: '',
     footerClassName: '',
-    icon: <Outline icon="LockOutline" />,
+    icon: <IconsOutline icon="LockOutline" />,
     children: 'a',
     isOpen: true,
     footer: (

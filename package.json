@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
+    "care-monitor-components": "^1.1.0",
     "clsx": "^2.1.1",
     "motion": "^12.23.12",
     "next": "15.4.4",
