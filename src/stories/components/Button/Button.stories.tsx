@@ -1,7 +1,7 @@
 import Plus from '@/components/icons/fill/Plus';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Button as ButtonComponent } from './Button';
+import { Button as ButtonComponent } from './';
 
 const meta = {
   title: 'Components/Button',

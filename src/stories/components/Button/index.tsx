@@ -44,6 +44,7 @@ const buttonSize = tv({
     'items-center',
     'justify-center',
     'body-large-bold',
+    'min-w-44',
     'px-4',
   ],
   variants: {

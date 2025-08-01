@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Segmented as SegmentedComponent } from './Segmented';
+import { Segmented as SegmentedComponent } from './';
 
 const meta = {
   title: 'Components/Segmented',

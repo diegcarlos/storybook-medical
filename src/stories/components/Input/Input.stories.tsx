@@ -1,7 +1,7 @@
 import { EmailOutline } from '@/components/icons/outline';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Input as InputComponent } from './Input';
+import { Input as InputComponent } from './';
 
 const meta = {
   title: 'Components/Input',

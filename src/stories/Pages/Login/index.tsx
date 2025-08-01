@@ -4,14 +4,17 @@ import {
   Google,
   LockOutline,
 } from '@/components/icons/outline';
-import { BgLogin } from '@/stories/components/BgLogin/BgLogin';
-import { Button } from '@/stories/components/Button/Button';
-import { CardLogin } from '@/stories/components/CardLogin/CardLogin';
-import { Divider } from '@/stories/components/Divider/Divider';
-import { Input } from '@/stories/components/Input/Input';
-import { Segmented } from '@/stories/components/Segmented/Segmented';
-import { Switch } from '@/stories/components/Switch/Switch';
+import { BgLogin } from '@/stories/components/BgLogin';
+import { Button } from '@/stories/components/Button';
+import { CardLogin } from '@/stories/components/CardLogin';
+import { Divider } from '@/stories/components/Divider';
+import { Input } from '@/stories/components/Input';
+import { Modal } from '@/stories/components/Modal';
+import { Segmented } from '@/stories/components/Segmented';
+import { Switch } from '@/stories/components/Switch';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Image from 'next/image';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { tv } from 'tailwind-variants';
 import { z } from 'zod';
@@ -23,6 +26,7 @@ export interface LoginProps {
   imageUrl?: string;
   linkInstagram?: string;
   linkFacebook?: string;
+  linkSupport?: string;
 }
 
 const containerTv = tv({
@@ -46,6 +50,7 @@ export const Login = (props: LoginProps) => {
     imageUrl,
     linkInstagram,
     linkFacebook,
+    linkSupport,
   } = props;
 
   const {
@@ -63,20 +68,26 @@ export const Login = (props: LoginProps) => {
     },
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className={containerTv({ className })}>
       <BgLogin className="flex h-full w-full flex-col items-center justify-between">
         <div className="z-20 flex h-full w-full">
-          <div className="relative z-20 flex h-full w-full items-center justify-center">
+          <div className="relative z-20 hidden h-full w-full items-center justify-center lg:flex">
             {logoUrl && (
-              <img
+              <Image
+                width={216}
+                height={216}
                 src={logoUrl}
                 className="absolute top-8 left-4 max-w-[13.5rem]"
                 alt="Logo"
               />
             )}
             {imageUrl && (
-              <img
+              <Image
+                width={628.5}
+                height={628.5}
                 src={imageUrl}
                 className="w-full max-w-[41.9rem]"
                 alt="Background"
@@ -131,12 +142,13 @@ export const Login = (props: LoginProps) => {
                   />
                   <span className="label-medium">Remember me</span>
                 </label>
-                <a
-                  href="#"
+                <button
+                  type="button"
                   className="body-medium-medium text-primary-1 cursor-pointer"
+                  onClick={() => setIsModalOpen(true)}
                 >
                   Esqueceu a Senha?
-                </a>
+                </button>
               </div>
               <Button type="submit">Acessar</Button>
 
@@ -154,7 +166,7 @@ export const Login = (props: LoginProps) => {
           </CardLogin>
         </div>
         {/* Footer */}
-        <div className="z-20 flex h-22 w-full items-end justify-between px-12">
+        <div className="z-20 hidden h-22 w-full items-end justify-between px-12 lg:flex">
           <div className="flex w-full items-end gap-2">
             <div className="w-[305px]">
               <h2 className="text-[1.4rem] font-bold text-[#414141]">
@@ -164,28 +176,77 @@ export const Login = (props: LoginProps) => {
                 👋 Precisa de ajuda? Nossa equipe está pronta para te atender.
               </span>
             </div>
-            <a className="flex h-7.5 cursor-pointer items-center justify-center rounded-[7px] bg-[#C4C4C44D] pl-2 text-sm font-bold hover:bg-[#C4C4C44D]/80">
+            <a
+              href={linkSupport}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-7.5 cursor-pointer items-center justify-center rounded-[7px] bg-[#C4C4C44D] pl-2 text-sm font-bold hover:bg-[#C4C4C44D]/80"
+            >
               <span>Falar conosco</span>
               <span className="text-primary-1">
                 <ChevronRightOutline />
               </span>
             </a>
           </div>
-          <div className="flex h-full w-full items-center gap-2">
+          <div className="flex h-full w-full items-center justify-between gap-2">
             <div className="title-medium flex items-center gap-2">
-              <a hidden={!linkInstagram} href={linkInstagram}>
+              <a
+                hidden={!linkInstagram}
+                href={linkInstagram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Instagram
               </a>
               <span hidden={!linkInstagram && !linkFacebook} className="">
                 -
               </span>
-              <a hidden={!linkFacebook} href={linkFacebook}>
+              <a
+                hidden={!linkFacebook}
+                href={linkFacebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Facebook
+              </a>
+            </div>
+            <div className="title-medium">
+              <span>Site: </span>
+              <a
+                className="text-primary-1"
+                href="https://www.gestione.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                www.gestione.com.br
               </a>
             </div>
           </div>
         </div>
       </BgLogin>
+      <Modal
+        isOpen={isModalOpen}
+        title="Esqueceu a Senha?"
+        description="Digite seu e-mail para redefinir sua senha"
+        icon={<LockOutline />}
+        footer={
+          <div className="flex gap-4">
+            <Button primary={false} onClick={() => setIsModalOpen(false)}>
+              Voltar
+            </Button>
+            <Button>Enviar</Button>
+          </div>
+        }
+      >
+        <div>
+          <Input
+            sizes="large"
+            label="Email"
+            placeholder="Digite seu e-mail"
+            beforeIcon={<EmailOutline />}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };

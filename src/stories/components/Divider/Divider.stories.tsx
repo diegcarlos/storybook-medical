@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Divider as DividerComponent } from './Divider';
+import { Divider as DividerComponent } from './';
 
 const meta = {
   title: 'Components/Divider',

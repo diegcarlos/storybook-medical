@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { BgLogin as BgLoginComponent } from './BgLogin';
+import { BgLogin as BgLoginComponent } from './';
 
 const meta = {
   title: 'Components/BgLogin',

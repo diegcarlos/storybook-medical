@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { CardLogin as CardLoginComponent } from './CardLogin';
+import { CardLogin as CardLoginComponent } from './';
 
 const meta = {
   title: 'Components/CardLogin',
