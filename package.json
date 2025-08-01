@@ -1,6 +1,6 @@
 {
-  "name": "@seu-org/storybook-components",
-  "version": "0.1.0",
+  "name": "care-monitor-components",
+  "version": "0.1.1",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,12 @@
     "dist",
     "README.md"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -17,7 +23,7 @@
     "build-storybook": "storybook build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "build:lib": "tsc --project tsconfig.lib.json",
+    "build:lib": "tsup",
     "prepare": "npm run build:lib",
     "convert:svg": "node scripts/convert-svg-to-jsx.js"
   },
@@ -62,6 +68,7 @@
     "storybook": "^9.0.18",
     "storybook-preset-inline-svg": "^1.0.1",
     "tailwindcss": "^4",
+    "tsup": "^8.5.0",
     "typescript": "^5",
     "vite-plugin-svgr": "^4.3.0",
     "vitest": "^3.2.4"

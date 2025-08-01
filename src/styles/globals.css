@@ -3,7 +3,7 @@
 /* Declarações das fontes Graphie */
 @font-face {
   font-family: 'Graphie';
-  src: url('../fonts/graphie/Graphie-Thin.otf') format('opentype');
+  src: url('@/fonts/graphie/Graphie-Thin.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -77,22 +77,6 @@
   font-family: 'Graphie';
   src: url('../fonts/graphie/Graphie-BookItalic.otf') format('opentype');
   font-weight: 450;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Graphie';
-  src: url('../fonts/graphie/Graphie-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Graphie';
-  src: url('../fonts/graphie/Graphie-MediumItalic.otf') format('opentype');
-  font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
