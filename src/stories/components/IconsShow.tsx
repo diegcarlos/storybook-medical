@@ -24,6 +24,20 @@ const IconName = ({
   }
 };
 
+const CodeFormat = ({ type, iconName }: { type: string; iconName: string }) => {
+  return (
+    <span>
+      <span className="text-[#569CD6">{'<'}</span>
+      <span className="text-[#4EC9B0]">IconsOutline</span>
+      <span> </span>
+      <span className="text-[#9CDCFE]">icon</span>
+      <span className="text-white">=</span>
+      <span className="text-[#CE9178]">{`"${iconName}"`}</span>
+      <span className="text-[#569CD6]">{' />'}</span>
+    </span>
+  );
+};
+
 const IconsShow = ({ allIcons, type }: IconsShowProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredIcons, setFilteredIcons] = useState<string[]>([]);
@@ -97,17 +111,24 @@ const IconsShow = ({ allIcons, type }: IconsShowProps) => {
             Para usar o ícone, você precisa adicionar o seguinte código ao seu
             projeto:
           </small>
-          <code className="rounded-lg bg-gray-100 p-2">
-            <code>
-              {type === 'outline' && `<IconsOutline icon="${selectedIcon}" />`}
+          <pre className="relative overflow-x-auto rounded-lg border border-[#232323] bg-[#1e1e1e] p-4 font-mono text-sm text-gray-100 shadow-inner">
+            <div className="absolute top-2 left-3 flex gap-1">
+              <span className="inline-block h-3 w-3 rounded-full bg-[#ff5f56]" />
+              <span className="inline-block h-3 w-3 rounded-full bg-[#ffbd2e]" />
+              <span className="inline-block h-3 w-3 rounded-full bg-[#27c93f]" />
+            </div>
+            <code className="block pt-6 pl-0 whitespace-pre">
+              {type === 'outline' && (
+                <CodeFormat type={type} iconName={selectedIcon as any} />
+              )}
+              {type === 'fill' && (
+                <CodeFormat type={type} iconName={selectedIcon as any} />
+              )}
+              {type === 'medical' && (
+                <CodeFormat type={type} iconName={selectedIcon as any} />
+              )}
             </code>
-            <code>
-              {type === 'fill' && `<IconsFill icon="${selectedIcon}" />`}
-            </code>
-            <code>
-              {type === 'medical' && `<IconsMedical icon="${selectedIcon}" />`}
-            </code>
-          </code>
+          </pre>
         </div>
       </Modal>
     </>
