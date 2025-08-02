@@ -20,6 +20,12 @@
     "incremental": true,
     "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/types/**/*.d.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/types/**/*.d.ts",
+    "src/types/images.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

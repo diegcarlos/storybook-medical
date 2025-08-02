@@ -13,5 +13,5 @@ export default defineConfig({
   loader: {
     '.png': 'copy',
   },
-  onSuccess: 'cp -r src/assets dist/',
+  onSuccess: 'node scripts/copy-assets.js',
 });

@@ -23,6 +23,34 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       plugins: [svgr({ include: '**/*.svg?react' })],
+      resolve: {
+        alias: {
+          '@': '/src',
+        },
+      },
+      define: {
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      },
+      optimizeDeps: {
+        exclude: ['virtual:next-image'],
+      },
+      build: {
+        rollupOptions: {
+          external: ['virtual:next-image'],
+        },
+      },
+      server: {
+        fs: {
+          allow: ['..'],
+        },
+      },
+      assetsInclude: [
+        '**/*.png',
+        '**/*.jpg',
+        '**/*.jpeg',
+        '**/*.gif',
+        '**/*.webp',
+      ],
     });
   },
 };
